@@ -34,7 +34,7 @@ function Library() {
         ) : (
           <Grid item>
             {' '}
-            <Stack>{t('You do not have any game')}</Stack>
+            <Stack>{t('You do not have any game in your basket')}</Stack>
           </Grid>
         )}
       </>
