@@ -1,0 +1,27 @@
+
+.MuiOutlinedInput-notchedOutline:focus{
+    outline: none;
+    border: none;
+
+}
+.MuiOutlinedInput-notchedOutline{
+    border: none !important;
+    outline: none !important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: #fff !important;
+    font-weight: 600;
+}
+//Label color
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,.css-1pysi21-MuiFormLabel-root-MuiInputLabel-root,.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root,.MuiAutocomplete-inputFocused{
+    color: white !important;
+}
+.css-vghkgj-MuiFormControl-root-MuiTextField-root{
+   
+    outline: none;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+    color: black !important;
+    
+    font-weight: bolder !important;
+}
