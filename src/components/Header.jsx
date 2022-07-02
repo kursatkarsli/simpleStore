@@ -9,12 +9,12 @@ import {
 import { SelectBox } from '../assets/materialUi/SelectBox.jsx'
 import { useTranslation } from 'react-i18next'
 import LoginIcon from '@mui/icons-material/Login'
-import { ShoppingBasket } from '@mui/icons-material'
+import { ShoppingBasket, ShoppingBasketOutlined } from '@mui/icons-material'
 import StorefrontIcon from '@mui/icons-material/Storefront'
 import BadgeIcon from '@mui/icons-material/Badge'
 import { getDataFromLocalStorage } from './helper/getFromLocalStorage'
 import { LoginContext } from '../context/LoginContext'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import i18next from 'i18next'
 
 const Header = () => {
@@ -24,6 +24,8 @@ const Header = () => {
   const { handleChangeLanguage } = useContext(TranslationContext)
   const { login, setLogin } = useContext(LoginContext)
 
+  const location = useLocation()
+  console.log(location.pathname)
   const handleLogOut = () => {
     localStorage.removeItem('isUserLogIn')
     setLogin(false)
@@ -34,6 +36,7 @@ const Header = () => {
       setLanguage(getDataFromLocalStorage('language'))
     i18next.changeLanguage(getDataFromLocalStorage('language'))
   }, [])
+
   return (
     <StyledDiv className='header'>
       <StyledContainer className='header_logo'>
@@ -123,26 +126,50 @@ const Header = () => {
         )}
         {login && (
           <>
-            <Link
-              underline='none'
-              href='/library'
-              color='white'
-              sx={{ ':hover': { color: 'greenyellow' } }}
-            >
-              <Typography
-                className='nav_item'
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginRight: '1rem',
-                  alignItems: 'center',
-                }}
+            {location.pathname !== '/library' ? (
+              <Link
+                underline='none'
+                href='/library'
+                color='white'
+                sx={{ ':hover': { color: 'greenyellow' } }}
               >
-                {' '}
-                <ShoppingBasket fontSize='medium' />
-                <span>{t('My Library')}</span>
-              </Typography>
-            </Link>
+                <Typography
+                  className='nav_item'
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginRight: '1rem',
+                    alignItems: 'center',
+                  }}
+                >
+                  {' '}
+                  <ShoppingBasket fontSize='medium' />
+                  <span>{t('My Library')}</span>
+                </Typography>
+              </Link>
+            ) : (
+              <Link
+                underline='none'
+                href='/'
+                color='white'
+                sx={{ ':hover': { color: 'greenyellow' } }}
+              >
+                <Typography
+                  className='nav_item'
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginRight: '1rem',
+                    alignItems: 'center',
+                  }}
+                >
+                  {' '}
+                  <ShoppingBasketOutlined fontSize='medium' />
+                  <span>{t('Shop')}</span>
+                </Typography>
+              </Link>
+            )}
+
             <Link
               underline='none'
               href='/'
