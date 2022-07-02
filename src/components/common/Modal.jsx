@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Modal from '@mui/material/Modal'
-import SingliItemCard from '../SingliItemCard'
+import SingleItemCard from '../SingleItemCard'
 import { CustomBox } from '../../assets/materialUi/CustomModalBox'
 
 export default function CustomModal({ open, handleClose, game }) {
@@ -12,7 +12,7 @@ export default function CustomModal({ open, handleClose, game }) {
       aria-describedby='modal-modal-description'
     >
       <CustomBox>
-        <SingliItemCard
+        <SingleItemCard
           title={game.Name}
           description={game.Summary}
           price={game.Price}

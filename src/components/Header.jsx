@@ -15,6 +15,7 @@ import BadgeIcon from '@mui/icons-material/Badge'
 import { getDataFromLocalStorage } from './helper/getFromLocalStorage'
 import { LoginContext } from '../context/LoginContext'
 import { Navigate } from 'react-router-dom'
+import i18next from 'i18next'
 
 const Header = () => {
   const [open, setIsOpen] = useState(false)
@@ -28,6 +29,11 @@ const Header = () => {
     setLogin(false)
   }
 
+  useEffect(() => {
+    if (getDataFromLocalStorage('language'))
+      setLanguage(getDataFromLocalStorage('language'))
+    i18next.changeLanguage(getDataFromLocalStorage('language'))
+  }, [])
   return (
     <StyledDiv className='header'>
       <StyledContainer className='header_logo'>
@@ -166,12 +172,27 @@ const Header = () => {
           sx={{ display: { lg: 'none', xs: 'flex' }, position: 'relative' }}
           onClick={() => setIsOpen(!open)}
         >
+          <SelectBox
+            id='select'
+            value={language}
+            onChange={(e) => {
+              handleChangeLanguage(e.target.value)
+              setLanguage(e.target.value)
+            }}
+            variant='outlined'
+          >
+            <MenuItem value='tr' selected>
+              TR
+            </MenuItem>
+            <MenuItem value='en'>EN</MenuItem>
+          </SelectBox>
           <Button
             id='demo-positioned-button'
             aria-controls={open ? 'demo-positioned-menu' : undefined}
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
           ></Button>
+
           <Menu
             id='demo-positioned-menu'
             aria-labelledby='demo-positioned-button'
@@ -202,6 +223,20 @@ const Header = () => {
           sx={{ display: { lg: 'none', xs: 'flex' }, position: 'relative' }}
           onClick={() => setIsOpen(!open)}
         >
+          <SelectBox
+            id='select'
+            value={language}
+            onChange={(e) => {
+              handleChangeLanguage(e.target.value)
+              setLanguage(e.target.value)
+            }}
+            variant='outlined'
+          >
+            <MenuItem value='tr' selected>
+              TR
+            </MenuItem>
+            <MenuItem value='en'>EN</MenuItem>
+          </SelectBox>
           <Button
             id='demo-positioned-button'
             aria-controls={open ? 'demo-positioned-menu' : undefined}
