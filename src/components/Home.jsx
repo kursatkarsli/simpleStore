@@ -38,7 +38,7 @@ function Home() {
               sm={4}
               lg={3}
               sx={{ marginBlock: '30px' }}
-              key={index}
+              key={game.Id}
             >
               <CardItem
                 image={game.Cover}
@@ -57,14 +57,9 @@ function Home() {
           )?.map((game, index) => (
             <Grid
               item
-              xs={
-                fiterGamesAccordingToCategories(
-                  getDataFromLocalStorage('games'),
-                  categoryInputValue
-                ).length < 2
-                  ? 12
-                  : 3
-              }
+              xs={12}
+              sm={4}
+              lg={3}
               sx={{ marginBlock: '30px' }}
               key={game.Id}
             >
@@ -83,14 +78,9 @@ function Home() {
             (game, index) => (
               <Grid
                 item
-                xs={
-                  fiterGamesAccordingToCategories(
-                    getDataFromLocalStorage('games'),
-                    InputValue
-                  ).length < 2
-                    ? 10
-                    : 3
-                }
+                xs={12}
+                sm={4}
+                lg={3}
                 sx={{ marginBlock: '30px' }}
                 key={game.Id}
               >

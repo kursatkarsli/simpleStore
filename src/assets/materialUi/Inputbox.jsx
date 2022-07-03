@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 
 export const CustomTextField = styled(TextField)(({ theme }) => ({
   color: 'white',
-  backgroundColor: '#9c9c9c',
+  backgroundColor: 'rgb(156 156 156 / 38%)',
   '::placeholder': { backgroundColor: 'white' },
   borderRadius: '10px',
 }))

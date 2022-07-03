@@ -56,17 +56,7 @@ function Library() {
         ) : inputType === 'category' ? (
           fiterGamesAccordingToCategories(library, categoryInputValue)?.map(
             (game, index) => (
-              <Grid
-                item
-                xs={
-                  fiterGamesAccordingToCategories(library, categoryInputValue)
-                    .length < 2
-                    ? 10
-                    : 3
-                }
-                sx={{ marginBlock: '30px' }}
-                key={game.Id}
-              >
+              <Grid item xs={12} sx={{ marginBlock: '30px' }} key={game.Id}>
                 <CardItem
                   image={game.Cover}
                   title={game.Name}
@@ -80,16 +70,7 @@ function Library() {
           )
         ) : inputType !== 'category' ? (
           filterGames(library, InputValue)?.map((game, index) => (
-            <Grid
-              item
-              xs={
-                fiterGamesAccordingToCategories(library, InputValue).length < 2
-                  ? 10
-                  : 3
-              }
-              sx={{ marginBlock: '30px' }}
-              key={game.Id}
-            >
+            <Grid item xs={12} sx={{ marginBlock: '30px' }} key={game.Id}>
               <CardItem
                 image={game.Cover}
                 title={game.Name}
