@@ -16,54 +16,79 @@ function Home() {
     useContext(InformationContext)
 
   return (
-    <Container maxWidth='xl'>
-      <Grid
-        container
-        spacing={1}
-        margin='5px'
-        justifyContent='center'
-        alignItems='center'
-      >
-        <Grid item xs={12}>
-          <CustomStack direction={{ xs: 'column', sm: 'row' }}>
-            <InputBox />
-            <InputBoxCategories />
-          </CustomStack>
-        </Grid>
+    <Grid
+      container
+      spacing={1}
+      marginTop='20px'
+      justifyContent='center'
+      alignItems='center'
+    >
+      <Grid item xs={12} sx={{ marginX: { xs: '0', sm: '10px' } }}>
+        <CustomStack direction={{ xs: 'column', sm: 'row' }}>
+          <InputBox />
+          <InputBoxCategories />
+        </CustomStack>
+      </Grid>
 
-        {getDataFromLocalStorage('games') && !InputValue && !categoryInputValue
-          ? getDataFromLocalStorage('games')?.map((game, index) => (
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                lg={3}
-                sx={{ marginBlock: '30px' }}
-                key={index}
-              >
-                <CardItem
-                  image={game.Cover}
-                  title={game.Name}
-                  description={game.Summary}
-                  price={game.Price}
-                  id={game.Id}
-                  game={game}
-                />{' '}
-              </Grid>
-            ))
-          : inputType === 'category'
-          ? fiterGamesAccordingToCategories(
-              getDataFromLocalStorage('games'),
-              categoryInputValue
-            )?.map((game, index) => (
+      {getDataFromLocalStorage('games') && !InputValue && !categoryInputValue
+        ? getDataFromLocalStorage('games')?.map((game, index) => (
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              lg={3}
+              sx={{ marginBlock: '30px' }}
+              key={index}
+            >
+              <CardItem
+                image={game.Cover}
+                title={game.Name}
+                description={game.Summary}
+                price={game.Price}
+                id={game.Id}
+                game={game}
+              />{' '}
+            </Grid>
+          ))
+        : inputType === 'category'
+        ? fiterGamesAccordingToCategories(
+            getDataFromLocalStorage('games'),
+            categoryInputValue
+          )?.map((game, index) => (
+            <Grid
+              item
+              xs={
+                fiterGamesAccordingToCategories(
+                  getDataFromLocalStorage('games'),
+                  categoryInputValue
+                ).length < 2
+                  ? 12
+                  : 3
+              }
+              sx={{ marginBlock: '30px' }}
+              key={game.Id}
+            >
+              <CardItem
+                image={game.Cover}
+                title={game.Name}
+                description={game.Summary}
+                price={game.Price}
+                id={game.Id}
+                game={game}
+              />{' '}
+            </Grid>
+          ))
+        : inputType !== 'category' &&
+          filterGames(getDataFromLocalStorage('games'), InputValue)?.map(
+            (game, index) => (
               <Grid
                 item
                 xs={
                   fiterGamesAccordingToCategories(
                     getDataFromLocalStorage('games'),
-                    categoryInputValue
+                    InputValue
                   ).length < 2
-                    ? 12
+                    ? 10
                     : 3
                 }
                 sx={{ marginBlock: '30px' }}
@@ -78,36 +103,9 @@ function Home() {
                   game={game}
                 />{' '}
               </Grid>
-            ))
-          : inputType !== 'category' &&
-            filterGames(getDataFromLocalStorage('games'), InputValue)?.map(
-              (game, index) => (
-                <Grid
-                  item
-                  xs={
-                    fiterGamesAccordingToCategories(
-                      getDataFromLocalStorage('games'),
-                      InputValue
-                    ).length < 2
-                      ? 10
-                      : 3
-                  }
-                  sx={{ marginBlock: '30px' }}
-                  key={game.Id}
-                >
-                  <CardItem
-                    image={game.Cover}
-                    title={game.Name}
-                    description={game.Summary}
-                    price={game.Price}
-                    id={game.Id}
-                    game={game}
-                  />{' '}
-                </Grid>
-              )
-            )}
-      </Grid>
-    </Container>
+            )
+          )}
+    </Grid>
   )
 }
 

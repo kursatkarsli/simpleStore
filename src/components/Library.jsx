@@ -22,10 +22,10 @@ function Library() {
       container
       justifyContent='center'
       alignItems='center'
-      margin={{ xs: '0px', sm: '5px' }}
+      marginTop='20px'
       spacing={1}
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} sx={{ marginX: { xs: '0', sm: '10px' } }}>
         <CustomStack direction={{ xs: 'column', sm: 'row' }}>
           <InputBox library={library} />
           <InputBoxCategories library={true} />
