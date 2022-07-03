@@ -18,6 +18,7 @@ export default function CustomModal({ open, handleClose, game }) {
           price={game.Price}
           id={game.Id}
           game={game}
+          handleClose={handleClose}
         />
       </CustomBox>
     </Modal>

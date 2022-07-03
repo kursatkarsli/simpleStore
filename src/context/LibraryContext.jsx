@@ -6,6 +6,7 @@ export const LibraryContext = createContext()
 
 export const Library = ({ children }) => {
   const [library, setLibrary] = useState()
+  const [categoryInput, setCategoryInput] = useState('')
 
   useEffect(() => {
     setLibrary(
@@ -13,7 +14,9 @@ export const Library = ({ children }) => {
     )
   }, [])
   return (
-    <LibraryContext.Provider value={{ library, setLibrary }}>
+    <LibraryContext.Provider
+      value={{ library, setLibrary, categoryInput, setCategoryInput }}
+    >
       {children}
     </LibraryContext.Provider>
   )

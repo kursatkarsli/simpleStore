@@ -32,7 +32,13 @@ function SingleCartItem(props) {
   }
 
   return (
-    <Card sx={{ maxWidth: { sm: 600 } }} className='single-card'>
+    <Card
+      sx={{ maxWidth: { sm: 600 }, maxHeight: { xs: 100 }, overflow: 'auto' }}
+      className='single-card'
+    >
+      <Stack sx={{ float: 'right' }} onClick={props.handleClose}>
+        X
+      </Stack>
       <Stack direction='row'>
         <AliceCarousel
           mouseTracking

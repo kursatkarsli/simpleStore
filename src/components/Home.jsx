@@ -17,9 +17,15 @@ function Home() {
 
   return (
     <Container maxWidth='xl'>
-      <Grid container marginTop='3rem' spacing={1} marginLeft='0'>
+      <Grid
+        container
+        spacing={1}
+        margin='5px'
+        justifyContent='center'
+        alignItems='center'
+      >
         <Grid item xs={12}>
-          <CustomStack direction='row'>
+          <CustomStack direction={{ xs: 'column', sm: 'row' }}>
             <InputBox />
             <InputBoxCategories />
           </CustomStack>
@@ -61,7 +67,7 @@ function Home() {
                     : 3
                 }
                 sx={{ marginBlock: '30px' }}
-                key={index}
+                key={game.Id}
               >
                 <CardItem
                   image={game.Cover}
@@ -76,7 +82,19 @@ function Home() {
           : inputType !== 'category' &&
             filterGames(getDataFromLocalStorage('games'), InputValue)?.map(
               (game, index) => (
-                <Grid item xs={12} sx={{ marginBlock: '30px' }} key={index}>
+                <Grid
+                  item
+                  xs={
+                    fiterGamesAccordingToCategories(
+                      getDataFromLocalStorage('games'),
+                      InputValue
+                    ).length < 2
+                      ? 10
+                      : 3
+                  }
+                  sx={{ marginBlock: '30px' }}
+                  key={game.Id}
+                >
                   <CardItem
                     image={game.Cover}
                     title={game.Name}

@@ -5,7 +5,7 @@ import { InformationContext } from '../../context/informationContext'
 import { getDataFromLocalStorage } from '../helper/getFromLocalStorage'
 import { useTranslation } from 'react-i18next'
 
-export default function FreeSoloCreateOption() {
+export default function FreeSoloCreateOption(props) {
   const { InputValue, setInputValue, setInputType, setCategoryInputValue } =
     React.useContext(InformationContext)
   const { t } = useTranslation()
@@ -31,7 +31,7 @@ export default function FreeSoloCreateOption() {
       clearOnBlur
       handleHomeEndKeys
       id='free-solo-with-text-demo'
-      options={getDataFromLocalStorage('games') ?? []}
+      options={props.library ?? getDataFromLocalStorage('games') ?? []}
       getOptionLabel={(option) => {
         if (typeof option === 'string') {
           return option
@@ -42,7 +42,11 @@ export default function FreeSoloCreateOption() {
         return option.Name
       }}
       renderOption={(props, option) => <li {...props}>{option.Name}</li>}
-      sx={{ width: 400, marginRight: '20px' }}
+      sx={{
+        width: { xs: 300, sm: 400 },
+        marginRight: '20px',
+        marginBottom: '5px',
+      }}
       freeSolo
       renderInput={(params) => (
         <CustomTextField {...params} label={t('Search Game')} size='small' />

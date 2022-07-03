@@ -8,10 +8,11 @@ import { CustomCard } from '../assets/materialUi/CustomCard'
 import { CustomContainer } from '../assets/materialUi/CustomContainer'
 import { addToLocalStorage } from './helper/addToLocalStorage'
 import SendIcon from '@mui/icons-material/Send'
-import { Grid, Button, CardHeader, CardContent } from '@mui/material'
+import { Grid, Button, CardHeader } from '@mui/material'
 import SnackBar from './common/SnackBar'
 import { getDataFromLocalStorage } from './helper/getFromLocalStorage'
 import { LoginContext } from '../context/LoginContext'
+import HomeIcon from '@mui/icons-material/Home'
 
 const Login = () => {
   const {
@@ -32,7 +33,7 @@ const Login = () => {
     if (user && user.email === data.email && user.password === data.password) {
       addToLocalStorage('isUserLogIn', true)
       setLogin(true)
-      navigate('/')
+      navigate('/library')
     } else setOpen(true)
   }
   return (
@@ -90,6 +91,16 @@ const Login = () => {
             sx={{ marginTop: '10px' }}
           >
             {t('Login')}
+          </Button>{' '}
+          <Button
+            variant='contained'
+            color='secondary'
+            type='button'
+            endIcon={<HomeIcon />}
+            sx={{ marginTop: '10px' }}
+            onClick={() => navigate('/')}
+          >
+            {t('Main Page')}
           </Button>{' '}
         </form>
       </CustomCard>

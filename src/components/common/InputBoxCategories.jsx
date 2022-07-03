@@ -4,13 +4,17 @@ import { CustomTextField } from '../../assets/materialUi/Inputbox'
 import { InformationContext } from '../../context/informationContext'
 import { gameCategories } from '../helper/gameCategories'
 import { useTranslation } from 'react-i18next'
-export default function FreeSoloCreateOption() {
+import { getItemLibraryCategory } from '../helper/getLibraryGameCategory'
+import { LibraryContext } from '../../context/LibraryContext'
+export default function FreeSoloCreateOption(props) {
   const {
     categoryInputValue,
     setCategoryInputValue,
     setInputType,
     setInputValue,
   } = React.useContext(InformationContext)
+  const { library } = React.useContext(LibraryContext)
+
   const { t } = useTranslation()
   return (
     <Autocomplete
@@ -25,7 +29,7 @@ export default function FreeSoloCreateOption() {
         } else if (newValue && newValue.inputValue) {
           setCategoryInputValue(newValue.inputValue)
         } else {
-          if (newValue) setCategoryInputValue(newValue.category)
+          if (newValue) setCategoryInputValue(newValue)
           else setCategoryInputValue('')
         }
       }}
@@ -33,7 +37,11 @@ export default function FreeSoloCreateOption() {
       clearOnBlur
       handleHomeEndKeys
       id='free-solo-with-text-demo'
-      options={gameCategories}
+      options={
+        props.library && library
+          ? getItemLibraryCategory(library)
+          : gameCategories
+      }
       getOptionLabel={(option) => {
         if (typeof option === 'string') {
           return option
@@ -41,10 +49,10 @@ export default function FreeSoloCreateOption() {
         if (option.inputValue) {
           return option.inputValue
         }
-        return option.category
+        return option
       }}
-      renderOption={(props, option) => <li {...props}>{option.category}</li>}
-      sx={{ width: 400, marginRight: '20px' }}
+      renderOption={(props, option) => <li {...props}>{option}</li>}
+      sx={{ width: { xs: 300, sm: 400 }, marginRight: '20px' }}
       freeSolo
       renderInput={(params) => (
         <CustomTextField

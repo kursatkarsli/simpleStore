@@ -44,7 +44,13 @@ function CardItem(props) {
     )
   }
   return (
-    <Card sx={{ maxWidth: { sm: 400, md: 400, lg: 350 } }} className='card'>
+    <Card
+      sx={{
+        maxWidth: { xs: 325, sm: 400, md: 400, lg: 350 },
+        marginX: { xs: 2 },
+      }}
+      className='card'
+    >
       <Stack
         onClick={() => {
           addToLocalStorage(id, game)

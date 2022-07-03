@@ -8,7 +8,8 @@ import { CustomCard } from '../assets/materialUi/CustomCard'
 import { CustomContainer } from '../assets/materialUi/CustomContainer'
 import { addToLocalStorage } from './helper/addToLocalStorage'
 import SendIcon from '@mui/icons-material/Send'
-import { Grid, Button, Typography, CardHeader } from '@mui/material'
+import { Grid, Button, CardHeader } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
 
 const RegisterPage = () => {
   const {
@@ -80,6 +81,16 @@ const RegisterPage = () => {
             sx={{ marginTop: '10px' }}
           >
             {t('Register')}
+          </Button>{' '}
+          <Button
+            variant='contained'
+            color='secondary'
+            type='button'
+            endIcon={<HomeIcon />}
+            sx={{ marginTop: '10px' }}
+            onClick={() => navigate('/')}
+          >
+            {t('Main Page')}
           </Button>{' '}
         </form>
       </CustomCard>
