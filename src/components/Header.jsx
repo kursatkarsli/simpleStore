@@ -237,10 +237,11 @@ const Header = () => {
             <MenuItem
               onClick={() => {
                 setIsOpen(false)
-                ;<Navigate to='/library' />
               }}
             >
-              {t('My library')}
+              <Link underline='none' href='/library' color='black'>
+                {t('My library')}
+              </Link>
             </MenuItem>
             <MenuItem onClick={() => handleLogOut()}>{t('Log Out')}</MenuItem>
           </Menu>

@@ -18,6 +18,12 @@ body{
     body{
         overflow-x: hidden;
     }
+ 
     
+}
+@media screen and (max-width:500px) {
+    .alice-carousel__stage-item {
+     width: 160px !important;   
+    }
     
 }
