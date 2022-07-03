@@ -41,4 +41,9 @@ width: 18.75rem !important;
     align-content: center;
     align-items: center;
     transform: translateX(19rem);
+    cursor: pointer;
+}
+@media screen and (min-width:'600px') {
+    .close-button{ transform: translateX(33rem);
+    }
 }
