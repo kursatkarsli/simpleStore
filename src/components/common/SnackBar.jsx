@@ -1,6 +1,6 @@
 import { Alert, Snackbar } from '@mui/material'
 import { t } from 'i18next'
-import React, { useState } from 'react'
+import React from 'react'
 
 function SnackBar(props) {
   const { open, setOpen } = props

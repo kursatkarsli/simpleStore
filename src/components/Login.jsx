@@ -33,7 +33,7 @@ const Login = () => {
     if (user && user.email === data.email && user.password === data.password) {
       addToLocalStorage('isUserLogIn', true)
       setLogin(true)
-      navigate('/library')
+      navigate('/')
     } else setOpen(true)
   }
   return (

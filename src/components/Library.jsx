@@ -1,4 +1,4 @@
-import { Grid, Stack } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
 import React, { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CustomStack } from '../assets/materialUi/Home'
@@ -32,7 +32,11 @@ function Library() {
         </CustomStack>
       </Grid>{' '}
       <>
-        {library && library.length && !InputValue && !categoryInputValue ? (
+        {library.length < 1 ? (
+          <Typography component='h5' variant='h5' marginTop={20}>
+            {t('You do not have any game in your basket')}
+          </Typography>
+        ) : library && library.length && !InputValue && !categoryInputValue ? (
           library.map((game, index) => (
             <Grid
               item

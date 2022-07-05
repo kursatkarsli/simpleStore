@@ -5,7 +5,7 @@ import { InformationContext } from '../../context/informationContext'
 import { getDataFromLocalStorage } from '../helper/getFromLocalStorage'
 import { useTranslation } from 'react-i18next'
 
-export default function FreeSoloCreateOption(props) {
+export default function InputBox(props) {
   const { InputValue, setInputValue, setInputType, setCategoryInputValue } =
     React.useContext(InformationContext)
   const { t } = useTranslation()

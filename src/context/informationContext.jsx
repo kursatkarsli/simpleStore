@@ -7,7 +7,7 @@ import { Library } from './LibraryContext'
 export const InformationContext = createContext()
 
 export const Information = ({ children }) => {
-  const [isLoading, setIsLoading] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const [InputValue, setInputValue] = useState('')
   const [categoryInputValue, setCategoryInputValue] = useState('')
   const [inputType, setInputType] = useState('')

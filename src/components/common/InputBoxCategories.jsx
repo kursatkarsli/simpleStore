@@ -6,7 +6,8 @@ import { gameCategories } from '../helper/gameCategories'
 import { useTranslation } from 'react-i18next'
 import { getItemLibraryCategory } from '../helper/getLibraryGameCategory'
 import { LibraryContext } from '../../context/LibraryContext'
-export default function FreeSoloCreateOption(props) {
+
+export default function InputBoxCategories(props) {
   const {
     categoryInputValue,
     setCategoryInputValue,

@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useState } from 'react'
+import React, { memo, useContext } from 'react'
 import {
   Button,
   Card,
